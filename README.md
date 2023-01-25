@@ -25,6 +25,8 @@
     https://static.wikia.nocookie.net/tamagotchi/images/e/e5/Mametchi_standing.png/revision/latest?cb=20220714103055
   - Background Image : Local file png `./assets/bg.png`
 
+![card](./card.png)
+
 ## Other Mentionable Topic
 
 - SafeArea
