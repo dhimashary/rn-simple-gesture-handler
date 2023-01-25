@@ -18,8 +18,8 @@
 ### Style Information
 
 - Color
-  - Background SafeArea : #5C3526
-  - Text Color :
+  - Background SafeArea : `#5C3526`
+  - Text Color : `#42261C`
 - Asset
   - Character  
     https://static.wikia.nocookie.net/tamagotchi/images/e/e5/Mametchi_standing.png/revision/latest?cb=20220714103055
