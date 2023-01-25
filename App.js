@@ -11,8 +11,12 @@ import backgroundImg from "./assets/bg.png";
 const characterImg = {
   url: "https://static.wikia.nocookie.net/tamagotchi/images/e/e5/Mametchi_standing.png/revision/latest?cb=20220714103055",
 };
+import { useState } from 'react';
 
 export default function App() {
+  const [scale, setScale] = useState(1);
+  const [savedScale, setSavedScale] = useState(1);
+
   const singleTap = Gesture.Tap()
     .maxDuration(250)
     .onStart(() => {
@@ -35,9 +39,14 @@ export default function App() {
       ]);
     });
 
-  const pinch = Gesture.Pinch().onEnd(() => {
-    Alert.alert("Sakit tahuu");
-  });
+  const pinch = Gesture.Pinch()
+    .onUpdate(e => {
+      setScale(savedScale * e.scale);
+    })
+    .onEnd((e) => {
+      setSavedScale(scale);
+      Alert.alert("Sakit tahuu");
+    });
 
   const exlusiveGesture = Gesture.Exclusive(pinch, doubleTap, singleTap);
 
@@ -45,10 +54,16 @@ export default function App() {
     <SafeAreaView style={styles.containerSafeArea}>
       <ImageBackground source={backgroundImg} style={styles.background}>
         <GestureDetector gesture={doubleTap}>
-          <Text style={styles.topText}>TamaGotchiApp</Text>
+          <Text style={styles.topText}>TamaGotchiApp {scale} {savedScale}</Text>
         </GestureDetector>
         <GestureDetector gesture={exlusiveGesture}>
-          <Image source={characterImg} style={styles.character} />
+          <Image source={characterImg} style={[styles.character, {
+            transform: [
+              {
+                scale
+              }
+            ]
+          }]} />
         </GestureDetector>
       </ImageBackground>
     </SafeAreaView>
