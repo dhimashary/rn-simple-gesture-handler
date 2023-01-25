@@ -12,6 +12,7 @@ const characterImg = {
   url: "https://static.wikia.nocookie.net/tamagotchi/images/e/e5/Mametchi_standing.png/revision/latest?cb=20220714103055",
 };
 import { useState } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function App() {
   const [scale, setScale] = useState(1);
@@ -52,20 +53,22 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.containerSafeArea}>
-      <ImageBackground source={backgroundImg} style={styles.background}>
-        <GestureDetector gesture={doubleTap}>
-          <Text style={styles.topText}>TamaGotchiApp {scale} {savedScale}</Text>
-        </GestureDetector>
-        <GestureDetector gesture={exlusiveGesture}>
-          <Image source={characterImg} style={[styles.character, {
-            transform: [
-              {
-                scale
-              }
-            ]
-          }]} />
-        </GestureDetector>
-      </ImageBackground>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <ImageBackground source={backgroundImg} style={styles.background}>
+          <GestureDetector gesture={doubleTap}>
+            <Text style={styles.topText}>TamaGotchiApp {scale} {savedScale}</Text>
+          </GestureDetector>
+          <GestureDetector gesture={exlusiveGesture}>
+            <Image source={characterImg} style={[styles.character, {
+              transform: [
+                {
+                  scale
+                }
+              ]
+            }]} />
+          </GestureDetector>
+        </ImageBackground>
+      </GestureHandlerRootView>
     </SafeAreaView>
   );
 }
