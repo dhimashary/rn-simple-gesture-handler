@@ -1,6 +1,4 @@
-# LECTURE W2D2 PM
-
-## React Native : Styling & Gestrure Handler
+# React Native : Styling & Gestrure Handler
 
 - [StyleSheet](https://reactnative.dev/docs/stylesheet)
 - [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/)
